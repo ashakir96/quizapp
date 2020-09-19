@@ -1,0 +1,10 @@
+INSERT INTO users (name, email, password) VALUES ('Alice Munroe', 'amunroe@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Frank Munroe', 'fmunroe@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Mary Munroe', 'mmunroe@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Jasper Munroe', 'jmunroe@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Karl Marx', 'kmarx@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Carla Marx', 'cmarx@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Eleanore Marx', 'amarx@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Peter Marx', 'pmarx@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Marsha Marx', 'mmarx@gmail.com',	'password');
+INSERT INTO users (name, email, password) VALUES ('Friedrich Engels', 'fengels@gmail.com',	'password');
