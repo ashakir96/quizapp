@@ -1,4 +1,3 @@
--- Drop and recreate Widgets table (Example)
 
 DROP TABLE IF EXISTS answers CASCADE;
 CREATE TABLE answers (

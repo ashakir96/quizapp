@@ -1,4 +1,3 @@
--- Drop and recreate Widgets table (Example)
 
 DROP TABLE IF EXISTS answer_attempts CASCADE;
 CREATE TABLE answer_attempts (
