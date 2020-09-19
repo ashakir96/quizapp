@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3><%= question %></h3>
+  <form method="POST" action="/questions/<%= question_id%>">
+    <label for="answer1">Input answer 1</label>
+    <input type="text" name="answer1">
+    <input type="radio" value="false">Is incorrect?</input>
+    <input type="radio" value="true">Is correct?</input>
+    <br>
+    <label for="answer2">Input answer 2</label>
+    <input type="text" name="answer2">
+    <input type="radio" value="false">Is incorrect?</input>
+    <input type="radio" value="true">Is correct?</input>
+    <br>
+    <label for="answer3">Input answer 3</label>
+    <input type="text" name="answer3">
+    <input type="radio" value="false">Is incorrect?</input>
+    <input type="radio" value="true">Is correct?</input>
+    <br />
+    <label for="answer4">Input answer 4</label>
+    <input type="text" name="answer4">
+    <input type="radio" value="false">Is incorrect?</input>
+    <input type="radio" value="true">Is correct?</input>
+    <br>
+    <button type="submit">Submit answers</button>
+  </form>
+</body>
+</html>

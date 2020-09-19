@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2> MAKE QUIZ!!</h2>
+  <form method="POST" action="/users/<%= userId %>/createquiz">
+    <label for="name">QUIZ Title</label>
+    <input type="text" name="name">
+    <label for="description">description</label>
+    <input type="text" name="description">
+    <input type="radio" name="isPrivate" value="true"> Make private? </input>
+    <input type="radio" name="isPrivate" value="false"> Make public? </input>
+    <button type="submit"> Submit </button>
+  </form>
+</body>
+</html>
