@@ -11,11 +11,13 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get('/:quizid', (req, res) => {
     db.query(`
-    SELECT quizzes.name, questions.question, answers.answer
+    SELECT questions.id, quizzes.name, questions.question, answers.answer, quiz_id
     FROM answers
     JOIN questions ON questions.id = answers.question_id
     JOIN quizzes ON quizzes.id = questions.quiz_id
-    WHERE quiz_id = $1;`, [req.params.quizid])
+    WHERE quiz_id = $1
+    GROUP BY questions.question, quizzes.name, answers.answer, quiz_id, questions.id
+    ORDER BY questions.id;`, [req.params.quizid])
     .then(data => {
       let templateVar = {input: data.rows}
       res.render('../views/quiz_in_prog', templateVar)
