@@ -6,8 +6,28 @@
   <title>Quiz in Progress</title>
 </head>
 <body>
-  <h2>Your Quiz so far:</h2>
-  <h3><%= question%></h3>
-  <% for (question in questions)
+  <h2>Your Quiz so far: <%= input[0].name%></h2>
+  <h3>ALL Qs</h3>
+  <% let questionText = ''; %>
+  <% for (let obj of input) { %>
+    <% if (obj.question === questionText) { %>
+      <%= obj.answer %>
+      <br>
+    <% } else {  %>
+      <% questionText = obj.question %>
+      <%= questionText %>
+      <br>
+      <%= obj.answer %>
+      <br>
+    <% } %>
+  <% } %>
+    <br>
+  <form action="/quiz/<%= input[0].quiz_id %>/questions" method="get">
+    <input type="submit" value="Add Question!">
+</form>
+<form action="/quiz/<%= input[0].quiz_id %>/attempt" method="get">
+  <input type="submit" value="Finished">
+</form>
+
 </body>
 </html>
