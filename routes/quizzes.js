@@ -34,7 +34,7 @@ module.exports = (db) => {
       .then(data => {
         const question = data.rows;
         let questionID = question[0].id;
-        res.redirect(`/quiz/${req.params.quizid}/questions/${questionID}`);
+        res.redirect(`/quiz/${req.session.quiz_id}/questions/${questionID}`);
       })
       .catch(err => {
         res
