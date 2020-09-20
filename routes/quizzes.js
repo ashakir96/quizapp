@@ -9,6 +9,19 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+  router.get('/:quizid', (req, res) => {
+    db.query(`
+    SELECT quizzes.name, questions.question, answers.answer
+    FROM answers
+    JOIN questions ON questions.id = answers.question_id
+    JOIN quizzes ON quizzes.id = questions.quiz_id
+    WHERE quiz_id = $1;`, [req.params.quizid])
+    .then(data => {
+      let templateVar = {input: data.rows}
+      res.render('../views/quiz_in_prog', templateVar)
+    })
+
+  })
 
   router.get("/:quizid/questions", (req, res) => {
     req.session.quiz_id = req.params.quizid;

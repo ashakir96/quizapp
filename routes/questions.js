@@ -13,24 +13,6 @@ module.exports = (db) => {
       });
   });
 
-  router.get('/:quizid/:questionid', (req, res) => {
-    let query = `
-      SELECT quizzes.name, questions.question, answers.answer, answers.isCorrect
-      FROM answers
-      JOIN questions ON questions.id = answers.question_id
-      JOIN quizzes ON quiuzzes.id = questions.quiz_id
-      WHERE quiz_id = $1
-      RETURNING *;
-    `;
-    let values = [req.params.quizid];
-    db.query(query, values)
-      .then(data => {
-        let questions = data.rows;
-        templateVars = { questions };
-        console.log(data.rows);
-        res.render('../views/quiz_in_prog', templateVars);
-      })
-  });
 
   router.post('/:questionId', (req, res) => {
     let values = [req.params.questionId, req.body.answer1, req.body.isCorrecta1, req.body.answer2, req.body.isCorrecta2,
@@ -41,18 +23,16 @@ module.exports = (db) => {
             ($1, $2, $3), ($1, $4, $5), ($1, $6, $7), ($1, $8, $9)
         RETURNING *;
         `;
-    req.session.quiz_id = req.params.quiz_id;
     db.query(query, values)
-      .then(data => {
-        const questionID = data.rows[0].question_id;
-        return db.query(`
-          SELECT quiz_id FROM questions WHERE questions.id = $1 RETURNING quiz_id;
+      .then(async(data) => {
+        const questionID = await(data.rows[0].question_id);
+        db.query(`
+          SELECT quiz_id FROM questions WHERE questions.id = $1;
         `, [questionID])
-          .then(response => {
-            let quizid = response.rows[0].quiz_id;
-            res.redirect(`/${quizid}/${questionID}`);
-          })
-
+        .then(async(response) => {
+          let quizid = await(response.rows[0].quiz_id);
+          res.redirect(`/quiz/${quizid}`);
+        })
       })
       .catch(err => {
         res
