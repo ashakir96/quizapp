@@ -17,23 +17,23 @@ module.exports = (db) => {
   })
 
   router.get("/:quizid/questions/:questionid", (req, res) => {
-    db.query(`SELECT question FROM questions WHERE id = $1`, [req.params.questionid])
+    db.query(`SELECT question FROM questions WHERE id = $1;`, [req.params.questionid])
     .then(data => {
       let question = data.rows[0].question;
       let templateVars = {quiz_id: req.params.quizid, question_id: req.params.questionid, question};
       res.render('../views/answers', templateVars);
-    })
-  })
+    });
+  });
 
   router.post("/:quizid/questions", (req, res) => {
     let query = `INSERT INTO questions (quiz_id, question)
-                VALUES ($1, $2) RETURNING *`;
+                VALUES ($1, $2) RETURNING *;`;
     let values = [req.params.quizid, req.body.question];
     req.session.quiz_id = req.params.quizid;
     db.query(query, values)
       .then(data => {
         const question = data.rows;
-        let questionID = question[0].id
+        let questionID = question[0].id;
         res.redirect(`/quiz/${req.params.quizid}/questions/${questionID}`);
       })
       .catch(err => {

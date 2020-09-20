@@ -6,27 +6,28 @@
   <title>Document</title>
 </head>
 <body>
-  <h3><%= question %></h3>
+  <h3>Your question: <%= question %></h3>
+  <h4>Please provide four possible answers:</h4>
   <form method="POST" action="/questions/<%= question_id%>">
     <label for="answer1">Input answer 1</label>
     <input type="text" name="answer1">
-    <input type="radio" value="false">Is incorrect?</input>
-    <input type="radio" value="true">Is correct?</input>
+    <input type="radio" name="isCorrecta1" value="false">Is incorrect?</input>
+    <input type="radio" name="isCorrecta1" value="true">Is correct?</input>
     <br>
     <label for="answer2">Input answer 2</label>
     <input type="text" name="answer2">
-    <input type="radio" value="false">Is incorrect?</input>
-    <input type="radio" value="true">Is correct?</input>
+    <input type="radio" name="isCorrecta2" value="false">Is incorrect?</input>
+    <input type="radio" name="isCorrecta2" value="true">Is correct?</input>
     <br>
     <label for="answer3">Input answer 3</label>
     <input type="text" name="answer3">
-    <input type="radio" value="false">Is incorrect?</input>
-    <input type="radio" value="true">Is correct?</input>
+    <input type="radio" name="isCorrecta3" value="false">Is incorrect?</input>
+    <input type="radio" name="isCorrecta3" value="true">Is correct?</input>
     <br />
     <label for="answer4">Input answer 4</label>
     <input type="text" name="answer4">
-    <input type="radio" value="false">Is incorrect?</input>
-    <input type="radio" value="true">Is correct?</input>
+    <input type="radio" name="isCorrecta4" value="false">Is incorrect?</input>
+    <input type="radio" name="isCorrecta4" value="true">Is correct?</input>
     <br>
     <button type="submit">Submit answers</button>
   </form>
