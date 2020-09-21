@@ -13,5 +13,15 @@
 
   <body>
     <h1>Welcome to Quiz App! Make your own quizzes!</h1>
+    <h2>Check out our quizzes!</h2>
+    <% for (let quiz of quizzes) {%>
+          <!-- Ask Andy about how to set session cookie for new user -->
+      <a href="/attempts/<%= quiz.id%>/<%= quiz.user_id%>"><%= quiz.name %></a>
+      <br>
+      <%= quiz.description %>
+      <br>
+    <%}%>
+    <!-- Ask Andy about how to set session cookie for new user -->
+    <a href="/users/createquiz/:user_id">Create your own quiz!</a>
   </body>
 </html>
