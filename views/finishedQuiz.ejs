@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz in Progress</title>
+  <title>Your Quiz</title>
 </head>
 <body>
-  <h2>Your Quiz so far: <%= input[0].name%></h2>
-  <h3>ALL Qs</h3>
+  <h2>Your Quiz: <%= input[0].name%></h2>
+  <h3>Please click on one answer for each question:</h3>
   <% let questionText = ''; %>
   <% for (let obj of input) { %>
     <% if (obj.question === questionText) { %>
