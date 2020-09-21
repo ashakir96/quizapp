@@ -44,7 +44,7 @@ module.exports = (db) => {
     })
     .then(data => {
       let templateVar = { attempt: data.rows[0], answers: req.body}
-      res.render('../views/confirm', templateVar)
+      res.render('../views/results', templateVar)
     })
     .catch(err => {
       res
