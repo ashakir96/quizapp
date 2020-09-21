@@ -17,7 +17,7 @@ module.exports = (db) => {
     JOIN quizzes ON quizzes.id = questions.quiz_id
     JOIN users ON user_id = users.id
     WHERE quiz_id = $1
-    GROUP BY user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect
+    GROUP BY user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect, questions.id
     ORDER BY questions.id;`, [req.params.quizid])
       .then(data => {
         let templateVar = { input: data.rows }

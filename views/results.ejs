@@ -6,16 +6,13 @@
   <title>Document</title>
 </head>
 <body>
-  <h2>Confirm your answers</h2>
-  <% for (let answer in answers) { %>
-    <%= answer %>
-    <br>
-    <%= answers[answer] %>
+  <h2>Your Quiz Result!</h2>
+  <% for (let answer of attempt) { %>
+    <%= answer.question %>
+    <%= answer.answer %>
+    <%= answer.iscorrect %>
     <br>
   <% } %>
-  <form action="/results/<%= attempt.quiz_id %>/<%= attempt.user_id %>" method="get">
-    <input type="submit" value="Confirm">
-  </form>
 
 </body>
 </html>

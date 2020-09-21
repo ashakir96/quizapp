@@ -14,8 +14,7 @@ module.exports = (db) => {
     GROUP BY user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect, questions.id, answers.id
     ORDER BY questions.id;`, [req.params.quiz_id])
       .then(data => {
-        console.log(data.rows)
-        let templateVar = { input: data.rows}
+        let templateVar = { input: data.rows }
         res.render('../views/finishedQuiz', templateVar)
       });
   });
@@ -24,33 +23,58 @@ module.exports = (db) => {
 
   router.post("/:quiz_id/:user_id", (req, res) => {
     req.session = req.body;
-    console.log(req.body);
     db.query(`
     INSERT INTO quiz_attempts (quiz_id, user_id) VALUES ($1, $2) RETURNING *;
     `, [req.params.quiz_id, req.params.user_id])
-    .then(() => {
-      let answerId = Object.values(req.body);
-      console.log(answerId);
-      let string = `
-      INSERT INTO answer_attempts (answer_id, user_id) VALUES ($1, $2) RETURNING *
-      `;
-
-      db.query(string, answerId)
-    })
-    .then(data => {
-      db.query(`
-      SELECT answers from answer
-      `)
-    })
-    .then(data => {
-      let templateVar = { attempt: data.rows[0], answers: req.body}
-      res.render('../views/confirm', templateVar)
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then(() => {
+        let answerIds = Object.values(req.body);
+        let string = `
+      INSERT INTO answer_attempts (answer_id, user_id) VALUES `;
+        for (let answerId of answerIds) {
+          if (answerIds.indexOf(answerId) === (answerIds.length - 1)) {
+            string += `(${answerId}, ${req.params.user_id}) RETURNING *;`
+          } else {
+            string += `(${answerId}, ${req.params.user_id}), `;
+          }
+        }
+        return db.query(string);
+      })
+      .then(data => {
+        let arr = [];
+        for (let item of data.rows) {
+          arr.push(item.answer_id);
+        };
+        let qstring2 = `
+        SELECT question, answer, isCorrect
+        FROM questions
+        JOIN answers ON questions.id = answers.question_id
+        JOIN quizzes ON quiz_id = quizzes.id
+        JOIN answer_attempts ON answer_id = answers.id
+        WHERE quiz_id = ${req.params.quiz_id} `;
+        for (let id of arr) {
+          if (arr.length === 1) {
+            qstring2 += `AND answer_id = ${id} GROUP BY question, answer, isCorrect;`;
+          } else {
+            if (arr.indexOf(id) === (arr.length - 1)) {
+              qstring2 += `OR answer_id = ${id} GROUP BY question, answer, isCorrect;`;
+            } else if (arr.indexOf(id) === 0) {
+              qstring2 += `AND answer_id = ${id} `;
+            } else {
+              qstring2 += `OR answer_id = ${id} `;
+            }
+          }
+        }
+        return db.query(qstring2);
+      })
+      .then(data => {
+        let templateVar = { attempt: data.rows };
+        res.render('../views/results', templateVar);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   })
 
 
