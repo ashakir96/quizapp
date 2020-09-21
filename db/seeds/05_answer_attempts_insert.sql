@@ -1,4 +1,4 @@
-INSERT INTO answer_attempts (answer_id, result) VALUES (2, FALSE);
-INSERT INTO answer_attempts (answer_id, result) VALUES (6, TRUE);
-INSERT INTO answer_attempts (answer_id, result) VALUES (8, TRUE);
-INSERT INTO answer_attempts (answer_id, result) VALUES (12, FALSE);
+INSERT INTO answer_attempts (answer_id, user_id) VALUES (2, 1);
+INSERT INTO answer_attempts (answer_id, user_id) VALUES (6, 1);
+INSERT INTO answer_attempts (answer_id, user_id) VALUES (8, 1);
+INSERT INTO answer_attempts (answer_id, user_id) VALUES (12, 1);
