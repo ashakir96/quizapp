@@ -11,12 +11,13 @@ const router = express.Router();
 module.exports = (db) => {
   router.get('/:quizid', (req, res) => {
     db.query(`
-    SELECT questions.id, quizzes.name, questions.question, answers.answer, quiz_id
+    SELECT user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect
     FROM answers
     JOIN questions ON questions.id = answers.question_id
     JOIN quizzes ON quizzes.id = questions.quiz_id
+    JOIN users ON user_id = users.id
     WHERE quiz_id = $1
-    GROUP BY questions.question, quizzes.name, answers.answer, quiz_id, questions.id
+    GROUP BY user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect
     ORDER BY questions.id;`, [req.params.quizid])
       .then(data => {
         let templateVar = { input: data.rows }
@@ -24,20 +25,6 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/:quiz_id/attempt", (req, res) => {
-    db.query(`
-    SELECT questions.id, quizzes.name, questions.question, answers.answer, quiz_id
-    FROM answers
-    JOIN questions ON questions.id = answers.question_id
-    JOIN quizzes ON quizzes.id = questions.quiz_id
-    WHERE quiz_id = $1
-    GROUP BY questions.question, quizzes.name, answers.answer, quiz_id, questions.id
-    ORDER BY questions.id;`, [req.params.quizid])
-      .then(data => {
-        let templateVar = { input: data.rows }
-        res.render('../views/finishedQuiz', templateVar)
-      });
-  });
 
   router.get("/:quizid/questions", (req, res) => {
     req.session.quiz_id = req.params.quizid;
