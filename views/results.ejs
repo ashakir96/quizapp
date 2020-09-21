@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Confirm your answers</h2>
+  <% for (let answer in answers) { %>
+    <%= answer %>
+    <br>
+    <%= answers[answer] %>
+    <br>
+  <% } %>
+  <form action="/results/<%= attempt.quiz_id %>/<%= attempt.user_id %>" method="get">
+    <input type="submit" value="Confirm">
+  </form>
+
+</body>
+</html>

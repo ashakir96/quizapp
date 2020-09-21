@@ -25,7 +25,7 @@
   <form action="/quiz/<%= input[0].quiz_id %>/questions" method="get">
     <input type="submit" value="Add Question!">
 </form>
-<form action="/quiz/<%= input[0].quiz_id %>/attempt" method="get">
+<form action="/attempts/<%= input[0].quiz_id %>/<%= input[0].user_id %>" method="get">
   <input type="submit" value="Finished">
 </form>
 
