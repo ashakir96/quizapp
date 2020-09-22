@@ -9,7 +9,7 @@
   <h2>Your Quiz: <%= input[0].name%></h2>
   <h3>Please click on one answer for each question:</h3>
   <div>
-    <form method="POST" action="/attempts/<%= input[0].quiz_id %>/<%= input[0].user_id %>">
+    <form method="POST" action="/attempts/<%= input[0].quiz_id %>/results/<%= input[0].user_id %>">
 
       <% let questionText = ''; %>
       <% for (let obj of input) { %>
