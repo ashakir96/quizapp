@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Home Page</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <h1>Welcome to Quiz App! Make your own quizzes!</h1>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <div id="main-container">
+    <h1>Welcome to Quiz App!</h1>
+    <h2>(where you can make your own quizzes!)</h2>
     <h2>Check out our quizzes!</h2>
-    <% for (let quiz of quizzes) {%>
-          <!-- Ask Andy about how to set session cookie for new user -->
-      <a href="/attempts/<%= quiz.id%>/<%= quiz.user_id%>"><%= quiz.name %></a>
+    <div id="links-container">
+      <% for (let quiz of quizzes) {%>
+      <!-- Ask Andy about how to set session cookie for new user -->
+      <div class="quiz-link"><a href="/attempts/<%= quiz.id%>/<%= quiz.user_id%>">
+        <%= quiz.name %></a>
+        <br>
+        <p><%= quiz.description %></p>
+      </div>
       <br>
-      <%= quiz.description %>
-      <br>
-    <%}%>
+      <%}%>
     <!-- Ask Andy about how to set session cookie for new user -->
-    <a href="/users/createquiz/:user_id">Create your own quiz!</a>
+    <div class="quiz-link"><a href="/users/createquiz/:user_id">Create your own quiz!</a></div>
+  </div>
+  </div>
   </body>
 </html>
