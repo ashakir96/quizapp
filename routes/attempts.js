@@ -42,36 +42,8 @@ module.exports = (db) => {
         db.query(string)
         return data.rows[0].id;
       })
-      // .then(data => {
-      //   let arr = [];
-      //   for (let item of data.rows) {
-      //     arr.push(item.answer_id);
-      //   };
-      //   let qstring2 = `
-      //   SELECT question, answer, isCorrect, answer_attempts.user_id
-      //   FROM questions
-      //   JOIN answers ON questions.id = answers.question_id
-      //   JOIN quizzes ON quiz_id = quizzes.id
-      //   JOIN answer_attempts ON answer_id = answers.id
-      //   WHERE quiz_id = ${req.params.quiz_id} `;
-      //   for (let id of arr) {
-      //     if (arr.length === 1) {
-      //       qstring2 += `AND answer_id = ${id} GROUP BY question, answer, isCorrect, answer_attempts.user_id;`;
-      //     } else {
-      //       if (arr.indexOf(id) === (arr.length - 1)) {
-      //         qstring2 += `OR answer_id = ${id} GROUP BY question, answer, isCorrect, answer_attempts.user_id;`;
-      //       } else if (arr.indexOf(id) === 0) {
-      //         qstring2 += `AND answer_id = ${id} `;
-      //       } else {
-      //         qstring2 += `OR answer_id = ${id} `;
-      //       }
-      //     }
-      //   }
-      //   return db.query(qstring2);
-      // })
+
       .then(id => {
-        // let templateVar = { attempt: data.rows, quiz_id: req.params.quiz_id };
-        // res.render('../views/results', templateVar);
         res.redirect(`/attempts/${id}/results`)
       })
       .catch(err => {
