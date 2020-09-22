@@ -4,7 +4,21 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.get("/:quiz_attempt_id/results", (req, res) => {
-
+    let string = `
+    SELECT answer_attempts.id, answer, question, isCorrect, quiz_attempt_id, answer_attempts.user_id
+    FROM quiz_attempts
+    JOIN answer_attempts ON quiz_attempts.id = quiz_attempt_id
+    JOIN answers ON (answer_id = answers.id)
+    JOIN quizzes ON (quiz_attempts.quiz_id = quizzes.id)
+    JOIN questions ON (questions.id = answer_attempts.question_id)
+    WHERE quiz_attempts.id = $1
+    ORDER BY id;
+    `;
+    db.query(string, [req.params.quiz_attempt_id])
+    .then(data => {
+      let templateVar = {attempt: data.rows}
+      res.render("../views/results", templateVar);
+    })
   })
 
 
@@ -30,19 +44,18 @@ module.exports = (db) => {
     INSERT INTO quiz_attempts (quiz_id, user_id) VALUES ($1, $2) RETURNING *;
     `, [req.params.quiz_id, req.params.user_id])
       .then((data) => {
-        let answerIds = Object.values(req.body);
-        let string = `INSERT INTO answer_attempts (answer_id, user_id, quiz_attempt_id) VALUES `;
-        for (let answerId of answerIds) {
-          if (answerIds.indexOf(answerId) === (answerIds.length - 1)) {
-            string += `(${answerId}, ${req.params.user_id}, ${data.rows[0].id}) RETURNING *;`
+        let questionIds = Object.keys(req.body);
+        let string = `INSERT INTO answer_attempts (answer_id, user_id, quiz_attempt_id, question_id) VALUES `;
+        for (let questionId of questionIds) {
+          if (questionIds.indexOf(questionId) === (questionIds.length - 1)) {
+            string += `(${req.body[questionId]}, ${req.params.user_id}, ${data.rows[0].id}, ${questionId}) RETURNING *;`
           } else {
-            string += `(${answerId}, ${req.params.user_id}, ${data.rows[0].id}), `;
+            string += `(${req.body[questionId]}, ${req.params.user_id}, ${data.rows[0].id}, ${questionId}), `;
           }
         }
         db.query(string)
         return data.rows[0].id;
       })
-
       .then(id => {
         res.redirect(`/attempts/${id}/results`)
       })
@@ -52,7 +65,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
-
 
   return router;
 };

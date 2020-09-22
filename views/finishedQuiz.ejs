@@ -14,13 +14,13 @@
       <% let questionText = ''; %>
       <% for (let obj of input) { %>
         <% if (obj.question === questionText) { %>
-          <input type="radio" name="<%= obj.question%>" value="<%= obj.id%>"><%= obj.answer %></input>
+          <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
           <br>
         <% } else {  %>
           <% questionText = obj.question %>
           <h4><%= questionText %></h4>
           <br>
-          <input type="radio" name="<%= obj.question%>" value="<%= obj.id%>"><%= obj.answer %></input>
+          <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
           <br>
         <% } %>
       <% } %>
