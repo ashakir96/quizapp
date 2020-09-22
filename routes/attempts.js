@@ -3,6 +3,12 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  // router.get("/attempts/:attemptid/user/:user_id", (req, res) => {
+  //   res.render(data => {
+
+  //   });
+  // });
+
   router.get("/:quiz_id/:user_id", (req, res) => {
     db.query(`
     SELECT user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect, answers.id
@@ -18,8 +24,6 @@ module.exports = (db) => {
         res.render('../views/finishedQuiz', templateVar)
       });
   });
-
-  //working!
 
   router.post("/:quiz_id/:user_id", (req, res) => {
     req.session = req.body;
@@ -45,7 +49,7 @@ module.exports = (db) => {
           arr.push(item.answer_id);
         };
         let qstring2 = `
-        SELECT question, answer, isCorrect
+        SELECT question, answer, isCorrect, answer_attempts.user_id
         FROM questions
         JOIN answers ON questions.id = answers.question_id
         JOIN quizzes ON quiz_id = quizzes.id
@@ -53,10 +57,10 @@ module.exports = (db) => {
         WHERE quiz_id = ${req.params.quiz_id} `;
         for (let id of arr) {
           if (arr.length === 1) {
-            qstring2 += `AND answer_id = ${id} GROUP BY question, answer, isCorrect;`;
+            qstring2 += `AND answer_id = ${id} GROUP BY question, answer, isCorrect, answer_attempts.user_id;`;
           } else {
             if (arr.indexOf(id) === (arr.length - 1)) {
-              qstring2 += `OR answer_id = ${id} GROUP BY question, answer, isCorrect;`;
+              qstring2 += `OR answer_id = ${id} GROUP BY question, answer, isCorrect, answer_attempts.user_id;`;
             } else if (arr.indexOf(id) === 0) {
               qstring2 += `AND answer_id = ${id} `;
             } else {
@@ -67,7 +71,7 @@ module.exports = (db) => {
         return db.query(qstring2);
       })
       .then(data => {
-        let templateVar = { attempt: data.rows };
+        let templateVar = { attempt: data.rows, quiz_id: req.params.quiz_id };
         res.render('../views/results', templateVar);
       })
       .catch(err => {

@@ -13,6 +13,7 @@
     <%= answer.iscorrect %>
     <br>
   <% } %>
-<a href="/home">Take another quiz!</a>
+<!-- <a href="/attempts/<%= attempt[0].id%>/user/<%= attempt[0].user_id %>">Take another quiz!</a> -->
+<a href="/home/<%= attempt[0].user_id%>">Take another quiz!</a>
 </body>
 </html>

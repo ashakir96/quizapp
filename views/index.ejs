@@ -13,23 +13,27 @@
 </head>
 
 <body>
-  <div id="main-container">
+  <div class="main-container">
     <h1>Welcome to Quiz App!</h1>
     <h2>(where you can make your own quizzes!)</h2>
-    <h2>Check out our quizzes!</h2>
-    <div id="links-container">
-      <% for (let quiz of quizzes) {%>
-      <!-- Ask Andy about how to set session cookie for new user -->
-      <div class="quiz-link"><a href="/attempts/<%= quiz.id%>/<%= quiz.user_id%>">
-        <%= quiz.name %></a>
-        <br>
-        <p><%= quiz.description %></p>
+    <a href="/users/createquiz/<%= user_id %>">
+      <div class="create-quiz-link">
+        Create your own quiz!
       </div>
+    </a>
+    <h2>Check out our quizzes!</h2>
+    <div class="links-container">
+      <% for (let quiz of quizzes) {%>
+      <a href="/attempts/<%= quiz.id%>/<%= user_id %>">
+        <div class="quiz-link">
+          <%= quiz.name %>
+          <br>
+          <p><%= quiz.description %></p>
+        </div>
+      </a>
       <br>
       <%}%>
-    <!-- Ask Andy about how to set session cookie for new user -->
-    <div class="quiz-link"><a href="/users/createquiz/:user_id">Create your own quiz!</a></div>
-  </div>
+    </div>
   </div>
   </body>
 </html>
