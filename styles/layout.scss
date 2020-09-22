@@ -1,9 +1,57 @@
 // See: https://sass-lang.com/
 
 body {
-  background-color: #EEE;
+  background-color: aliceblue;
 
   h1 {
     color: #244751;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    align-items: center;
+    .links-container {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .quiz-link {
+        border: 1px dotted grey;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: lightblue;
+        text-align: center;
+        width: 300px;
+        margin: 10px;
+      }
+      .quiz-link:hover {
+        background-color: navy;
+        color: whitesmoke;
+        a {
+          color: whitesmoke;
+        }
+      }
+    }
+  }
+
+  .create-quiz-link {
+    border-radius: 5px;
+    background-color: teal;
+    padding: 20px;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+    color: navy;
+  }
+  a:hover {
+    font-weight: 900;
+  }
+  #create-quiz-link:hover {
+    color: teal;
+    font-weight: 900;
+    background-color: lightblue;
   }
 }
