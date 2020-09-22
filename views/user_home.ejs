@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <% if (userData.length > 0) {%>
+    <h1>Welcome <%= userData[0].users_name %>!</h1>
+    <a href="/users/createquiz/<%= userData[0].user_id %>">
+      <div class="create-quiz-link">
+        Create your own quiz!
+      </div>
+    </a>
+    <h2>Here are your quizzes:</h2>
+    <div class="links-container">
+      <% for (let quiz of userData) {%>
+      <a href="/attempts/<%= quiz.id%>/<%= quiz.user_id %>">
+        <div class="quiz-link">
+          <%= quiz.name %>
+          <br>
+          <p><%= quiz.description %></p>
+        </div>
+      </a>
+      <form method="POST" action="/users/<%= quiz.user_id %>/delete/<%= quiz.id %>">
+        <button class="delete-button" type="submit">Delete Quiz?
+        </button>
+      </form>
+      <br>
+      <%}%>
+  </div>
+  <% } else { %>
+      <h1>Welcome!</h1>
+      <a href="/users/createquiz/<%= user_id %>">
+        <div class="create-quiz-link">
+          Create your own quiz!
+        </div>
+      </a>
+      <%}%>
+    </div>
+</body>
+
+</html>
