@@ -4,8 +4,8 @@ body {
   background-color: whitesmoke;
   background-image: url("https://motionarray.imgix.net/preview-168738-46fYQmML5k-high_0004.jpg");
   background-size: auto;
-  background-position-y: 50px;
-  background-position-x: 450px;
+  background-position-y: 5vh;
+  background-position-x: 35vw;
   font-family: 'Times New Roman', Times, serif;
   nav {
     display: flex;
@@ -36,6 +36,59 @@ body {
     margin: 50px;
     align-items: center;
     margin-top: 120px;
+    .quiz-redirect {
+      background-color: #3D5D75;
+      margin: 10px;
+      padding: 20px;
+      color: whitesmoke;
+      font-size: 1.2em;
+      border-radius: 5px;
+    }
+    .quiz-redirect:hover {
+      background-color:whitesmoke;
+      color: #3D5D75;
+      border: 3px solid #3D5D75;
+    }
+    .results {
+      background-color: #3D5D75;
+      color: whitesmoke;
+      border-radius: 5px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        color: whitesmoke;
+      }
+      .answer-results {
+        display: flex;
+        flex-direction: column;
+        border: 3px solid whitesmoke;
+        padding: 30px;
+        .question-results {
+          font-size: 1.5em;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .input-answer {
+          font-size: 1.2em;
+          margin-bottom: 10px;
+        }
+        .false {
+          background-color: red;
+          width: 13.5%;
+          padding: 2px;
+          border-radius: 3px;
+        }
+        .true {
+          background-color: green;
+          width: 16.5%;
+          padding: 2px;
+          border-radius: 3px;
+        }
+      }
+    }
+
     .links-container {
       display: flex;
       flex-direction: row-reverse;
@@ -69,23 +122,58 @@ body {
     }
   }
   #create-quiz-cont  {
-    background-color: whitesmoke;
-    width: 70%;
+    margin: 50px;
+    background-color: #3D5D75;
+    width: 50%;
+    min-height: 500px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+    color: whitesmoke;
+    h1 {
+      color: whitesmoke;
+    }
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      font-weight: bold;
       input {
         width: 90%;
-        margin: 10px;
+        margin: 20px;
         border-radius: 3px;
         padding: 10px;
+        border-radius: 10px;
+      }
+      .privacy {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        input {
+          margin: 0px;
+          padding: 0px;
+          width: 5%;
+          justify-content: space-evenly;
+        }
+      }
+      button {
+        color: #3D5D75;
+        background-color: whitesmoke;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid black;
+        margin: 20px;
+      }
+      button:hover {
+        color:whitesmoke;
+        background-color:#3D5D75;
+        border: 2px solid whitesmoke
       }
     }
   }
