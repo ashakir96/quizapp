@@ -13,14 +13,20 @@
 </head>
 
 <body>
+  <header>
+    <nav>
+      <a href="/home/<%= user_id %>"><h2>KWIZY</h2></a>
+      <a href="/users/<%= user_id %>">
+        <div class="create-quiz-link">
+          Your Quizzes!
+        </div>
+      </a>
+    </nav>
+  </header>
   <div class="main-container">
     <h1>Welcome to Quiz App!</h1>
     <h2>(where you can make your own quizzes!)</h2>
-    <a href="/users/createquiz/<%= user_id %>">
-      <div class="create-quiz-link">
-        Create your own quiz!
-      </div>
-    </a>
+
     <h2>Check out our quizzes!</h2>
     <div class="links-container">
       <% for (let quiz of quizzes) {%>

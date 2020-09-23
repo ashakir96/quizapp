@@ -11,6 +11,16 @@
 </head>
 
 <body>
+  <header>
+    <nav>
+      <a href="/home/<%= userData[0].user_id %>"><h2>KWIZY</h2></a>
+      <a href="/home/<%= userData[0].user_id %>">
+        <div class="create-quiz-link">
+          Home
+        </div>
+      </a>
+    </nav>
+  </header>
   <div class="main-container">
     <% if (userData.length > 0) {%>
     <h1>Welcome <%= userData[0].users_name %>!</h1>
