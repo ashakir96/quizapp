@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>create quiz</title>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 </head>
+
 <body>
-  <h2> MAKE QUIZ!!</h2>
-  <form method="POST" action="/users/<%= userId %>/createquiz">
-    <label for="name">QUIZ Title</label>
-    <input type="text" name="name">
-    <label for="description">description</label>
-    <input type="text" name="description">
-    <input type="radio" name="isPrivate" value="true"> Make private? </input>
-    <input type="radio" name="isPrivate" value="false"> Make public? </input>
-    <button type="submit"> Submit </button>
-  </form>
+  <header>
+    <nav>
+      <a href="/home/<%= userId %>">
+        <h2>KWIZY</h2>
+      </a>
+      <a href="/users/<%= userId %>">
+        <div class="create-quiz-link">
+          Your Quizzes!
+        </div>
+      </a>
+    </nav>
+  </header>
+  <div class="main-container">
+    <div id="create-quiz-cont">
+      <h2> MAKE QUIZ!!</h2>
+      <form method="POST" action="/users/<%= userId %>/createquiz">
+        <label for="name">QUIZ Title:</label>
+        <input type="text" name="name">
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" name="description">
+        <br>
+        <input type="radio" name="isPrivate" value="true"> Make private?</input>
+        <input type="radio" name="isPrivate" value="false"> Make public?</input>
+        <br>
+        <button type="submit"> Submit </button>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>

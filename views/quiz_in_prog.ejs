@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz in Progress</title>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 </head>
-<body>
-  <h2>Your Quiz so far: <%= input[0].name%></h2>
-  <h3>ALL Qs</h3>
-  <% let questionText = ''; %>
-  <% for (let obj of input) { %>
-    <% if (obj.question === questionText) { %>
-      <li><%= obj.answer %></li>
-      <br>
-    <% } else {  %>
-      <% questionText = obj.question %>
-      <h4><%= questionText %></h4>
-      <br>
-      <li><%= obj.answer %></li>
-      <br>
-    <% } %>
-  <% } %>
-    <br>
-  <form action="/quiz/<%= input[0].quiz_id %>/questions" method="get">
-    <input type="submit" value="Add Question!">
-</form>
-<form action="/attempts/<%= input[0].quiz_id %>/<%= input[0].user_id %>" method="get">
-  <input type="submit" value="Finished">
-</form>
 
+<body>
+  <header>
+    <nav>
+      <a href="/home/<%= input[0].user_id %>">
+        <h2>KWIZY</h2>
+      </a>
+      <a href="/users/<%= input[0].user_id %>">
+        <div class="create-quiz-link">
+          Your Quizzes!
+        </div>
+      </a>
+    </nav>
+  </header>
+  <div class="main-container">
+    <h2>Your Quiz so far: <%= input[0].name%></h2>
+    <h3>ALL Qs</h3>
+    <% let questionText = ''; %>
+    <% for (let obj of input) { %>
+    <% if (obj.question === questionText) { %>
+    <li><%= obj.answer %></li>
+    <br>
+    <% } else {  %>
+    <% questionText = obj.question %>
+    <h4><%= questionText %></h4>
+    <br>
+    <li><%= obj.answer %></li>
+    <br>
+    <% } %>
+    <% } %>
+    <br>
+    <form action="/quiz/<%= input[0].quiz_id %>/questions" method="get">
+      <input type="submit" value="Add Question!">
+    </form>
+    <form action="/attempts/<%= input[0].quiz_id %>/<%= input[0].user_id %>" method="get">
+      <input type="submit" value="Finished">
+    </form>
+  </div>
 </body>
+
 </html>

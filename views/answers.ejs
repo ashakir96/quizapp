@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>answers</title>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 </head>
+
 <body>
-  <h3>Your question: <%= question %></h3>
-  <h4>Please provide four possible answers:</h4>
-  <form method="POST" action="/questions/<%= question_id%>">
-    <label for="answer1">Input answer 1</label>
-    <input type="text" name="answer1">
-    <input type="radio" name="isCorrecta1" value="false">Is incorrect?</input>
-    <input type="radio" name="isCorrecta1" value="true">Is correct?</input>
-    <br>
-    <label for="answer2">Input answer 2</label>
-    <input type="text" name="answer2">
-    <input type="radio" name="isCorrecta2" value="false">Is incorrect?</input>
-    <input type="radio" name="isCorrecta2" value="true">Is correct?</input>
-    <br>
-    <label for="answer3">Input answer 3</label>
-    <input type="text" name="answer3">
-    <input type="radio" name="isCorrecta3" value="false">Is incorrect?</input>
-    <input type="radio" name="isCorrecta3" value="true">Is correct?</input>
-    <br />
-    <label for="answer4">Input answer 4</label>
-    <input type="text" name="answer4">
-    <input type="radio" name="isCorrecta4" value="false">Is incorrect?</input>
-    <input type="radio" name="isCorrecta4" value="true">Is correct?</input>
-    <br>
-    <button type="submit">Submit answers</button>
-  </form>
+  <header>
+    <nav>
+      <h2>KWIZY</h2>
+    </nav>
+  </header>
+  <div class="main-container">
+    <div class="create-answers-cont">
+      <h3>Your question: <%= question %></h3>
+      <h4>Please provide four possible answers:</h4>
+      <form method="POST" action="/questions/<%= question_id%>">
+        <label for="answer1">Input answer 1</label>
+        <input type="text" name="answer1">
+        <input type="radio" name="isCorrecta1" value="false">Is incorrect?</input>
+        <input type="radio" name="isCorrecta1" value="true">Is correct?</input>
+        <br>
+        <label for="answer2">Input answer 2</label>
+        <input type="text" name="answer2">
+        <input type="radio" name="isCorrecta2" value="false">Is incorrect?</input>
+        <input type="radio" name="isCorrecta2" value="true">Is correct?</input>
+        <br>
+        <label for="answer3">Input answer 3</label>
+        <input type="text" name="answer3">
+        <input type="radio" name="isCorrecta3" value="false">Is incorrect?</input>
+        <input type="radio" name="isCorrecta3" value="true">Is correct?</input>
+        <br />
+        <label for="answer4">Input answer 4</label>
+        <input type="text" name="answer4">
+        <input type="radio" name="isCorrecta4" value="false">Is incorrect?</input>
+        <input type="radio" name="isCorrecta4" value="true">Is correct?</input>
+        <br>
+        <button type="submit">Submit answers</button>
+      </form>
+    </div>
+  </div>
 </body>
+
 </html>
