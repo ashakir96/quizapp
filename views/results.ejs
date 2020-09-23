@@ -24,15 +24,24 @@
     </nav>
   </header>
   <div class="main-container">
-    <h2>Your Quiz Result!</h2>
-    <% for (let answer of attempt) { %>
-    <%= answer.question %>
-    <%= answer.answer %>
-    <%= answer.iscorrect %>
-    <br>
-    <% } %>
-    <!-- <a href="/attempts/<%= attempt[0].id%>/user/<%= attempt[0].user_id %>">Take another quiz!</a> -->
-    <a href="/home/<%= attempt[0].user_id%>">Take another quiz!</a>
+    <div class="results">
+      <h1>Your Quiz Result!</h1>
+      <h1><%= attempt[0].name %></h1>
+      <div class="answer-results">
+        <% for (let answer of attempt) { %>
+        <span class="question-results"> Question: <%= answer.question %> </span>
+        <span class="input-answer"> Your Answer: <%= answer.answer %></span>
+        <% if (answer.iscorrect === false) { %>
+        <span class="false" > WRONG</span>
+        <br>
+        <% } else { %>
+          <span class="true" > CORRECT</span>
+        <br>
+        <% } %>
+      <% } %>
+    </div>
+    </div>
+    <a href="/home/<%= attempt[0].user_id%>"> <div class="quiz-redirect">Take another quiz!</div></a>
   </div>
 </body>
 

@@ -25,18 +25,20 @@
   </header>
   <div class="main-container">
     <div id="create-quiz-cont">
-      <h2> MAKE QUIZ!!</h2>
+      <h1> Make Your Own KWIZY!!</h1>
       <form method="POST" action="/users/<%= userId %>/createquiz">
-        <label for="name">QUIZ Title:</label>
+        <label for="name">Quiz Title:</label>
         <input type="text" name="name">
         <br>
-        <label for="description">Description:</label>
+        <label for="description"> Quiz Description:</label>
         <input type="text" name="description">
         <br>
-        <input type="radio" name="isPrivate" value="true"> Make private?</input>
-        <input type="radio" name="isPrivate" value="false"> Make public?</input>
-        <br>
-        <button type="submit"> Submit </button>
+        <div class="privacy">
+          <input type="radio" name="isPrivate" value="true"> Make private?</input>
+          <input type="radio" name="isPrivate" value="false"> Make public?</input>
+          <br>
+        </div>
+        <button type="submit"> Add Questions! </button>
       </form>
     </div>
   </div>
