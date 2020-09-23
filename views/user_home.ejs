@@ -13,7 +13,9 @@
 <body>
   <header>
     <nav>
-      <a href="/home/<%= userData[0].user_id %>"><h2>KWIZY</h2></a>
+      <a href="/home/<%= userData[0].user_id %>">
+        <h2>KWIZY</h2>
+      </a>
       <a href="/home/<%= userData[0].user_id %>">
         <div class="create-quiz-link">
           Home
@@ -32,18 +34,20 @@
     <h2>Here are your quizzes:</h2>
     <div class="links-container">
       <% for (let quiz of userData) {%>
-      <a href="/attempts/<%= quiz.id%>/<%= quiz.user_id %>">
-        <div class="quiz-link">
-          <%= quiz.name %>
-          <br>
-          <p><%= quiz.description %></p>
-        </div>
-      </a>
-      <form method="POST" action="/users/<%= quiz.user_id %>/delete/<%= quiz.id %>">
-        <button class="delete-button" type="submit">Delete Quiz?
-        </button>
-      </form>
-      <br>
+      <div class="quiz-cont">
+        <a href="/attempts/<%= quiz.id%>/<%= quiz.user_id %>">
+          <div class="quiz-link">
+            <%= quiz.name %>
+            <br>
+            <p><%= quiz.description %></p>
+          </div>
+        </a>
+        <form method="POST" action="/users/<%= quiz.user_id %>/delete/<%= quiz.id %>">
+          <button class="delete-btn" type="submit">Delete Quiz?
+          </button>
+        </form>
+        <br>
+      </div>
       <%}%>
   </div>
   <% } else { %>
