@@ -41,7 +41,7 @@ body {
       margin: 10px;
       padding: 20px;
       color: whitesmoke;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       border-radius: 5px;
     }
     .quiz-redirect:hover {
@@ -66,12 +66,12 @@ body {
         border: 3px solid whitesmoke;
         padding: 30px;
         .question-results {
-          font-size: 1.5em;
+          font-size: 1.5rem;
           font-weight: bold;
           margin-bottom: 10px;
         }
         .input-answer {
-          font-size: 1.2em;
+          font-size: 1.2rem;
           margin-bottom: 10px;
         }
         .false {
@@ -210,34 +210,85 @@ body {
     box-shadow: 3px 3px lightsteelblue;
   }
   .create-question-cont {
-    background-color: whitesmoke;
-    width: 70%;
+    background-color: #3D5D75;
+    width: 50%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+    color: whitesmoke;
+    margin: 40px;
+    h2 {
+      font-size: xx-large;
+    }
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      margin: 20px;
+      font-size: large;
       input {
         width: 90%;
-        margin: 10px;
+        margin: 20px;
         border-radius: 3px;
         padding: 10px;
+      }
+      button {
+        margin: 20px;
+        padding: 20px;
+        color: #3D5D75;
+        background-color: whitesmoke;
+        border-radius: 10px;
+      }
+      button:hover {
+        color: whitesmoke;
+        background-color: #3D5D75;
+        border: 3px solid whitesmoke;
       }
     }
   }
   .create-answers-cont {
     background-color: whitesmoke;
-    width: 70%;
+    width: 50%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+    background-color: #3D5D75;
+    color: whitesmoke;
+    margin: 50px;
+    h1 {
+      color: whitesmoke;
+    }
+    form {
+      label {
+        font-weight: bold;
+      }
+      input {
+        margin: 10px;
+        margin-bottom: 35px;
+      }
+      input.textbox {
+        width: 90%;
+        margin-bottom: 5px;
+      }
+      button {
+        margin: 20px;
+        padding: 10px;
+        color: #3D5D75;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        margin-left: 10vw;
+      }
+      button:hover {
+        color: whitesmoke;
+        background-color:#3D5D75;
+        border: 3px solid whitesmoke;
+      }
+    }
   }
   .finished-quiz-container {
     background-color: #3D5D75;
@@ -280,6 +331,42 @@ body {
         input {
           margin-right: 5px;
         }
+      }
+    }
+  }
+  .quiz-inprog-cont {
+    background-color: whitesmoke;
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #3D5D75;
+    color: whitesmoke;
+    margin: 50px;
+    font-size: larger;
+    .qsofar {
+      border: 3px solid whitesmoke;
+      padding: 10px 50px;
+      margin: 10px;
+      border-radius: 5px;
+      h4 {
+        margin-bottom: -5px;
+      }
+    }
+    form {
+      input {
+          margin: 20px;
+          padding: 10px;
+          color: #3D5D75;
+          background-color: whitesmoke;
+          border-radius: 10px;
+      }
+      input:hover {
+        color: whitesmoke;
+        background-color:#3D5D75;
+        border: 3px solid whitesmoke;
       }
     }
   }
