@@ -5,7 +5,7 @@ module.exports = (db) => {
 
   router.get("/:quiz_attempt_id/results", (req, res) => {
     let string = `
-    SELECT answer_attempts.id, answer, question, isCorrect, quiz_attempt_id, answer_attempts.user_id
+    SELECT answer_attempts.id, answer, question, isCorrect, quiz_attempt_id, answer_attempts.user_id, quizzes.name
     FROM quiz_attempts
     JOIN answer_attempts ON quiz_attempts.id = quiz_attempt_id
     JOIN answers ON (answer_id = answers.id)

@@ -32,7 +32,6 @@ module.exports = (db) => {
     `, [req.params.id])
       .then(user => {
         let templateVar = {userData: user.rows, user_id: req.params.id};
-        console.log(templateVar);
         res.render("../views/user_home", templateVar);
       })
       .catch(error => {
