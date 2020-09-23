@@ -24,27 +24,34 @@
     </nav>
   </header>
   <div class="main-container">
-    <h2>Your Quiz: <%= input[0].name%></h2>
-    <h3>Please click on one answer for each question:</h3>
-    <div>
-      <form method="POST" action="/attempts/<%= input[0].quiz_id %>/results/<%= input[0].user_id %>">
-
-        <% let questionText = ''; %>
-        <% for (let obj of input) { %>
-        <% if (obj.question === questionText) { %>
-        <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
-        <br>
-        <% } else {  %>
-        <% questionText = obj.question %>
-        <h4><%= questionText %></h4>
-        <br>
-        <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
-        <br>
-        <% } %>
-        <% } %>
-        <br>
-        <button type="submit">Submit Quiz</button>
-      </form>
+    <div class="finished-quiz-container">
+      <h2>Your Quiz: <%= input[0].name%></h2>
+      <h3>Please click on one answer for each question:</h3>
+      <div>
+        <form method="POST" action="/attempts/<%= input[0].quiz_id %>/results/<%= input[0].user_id %>">
+          <% let questionText = ''; %>
+          <div class="q-and-a">
+            <% for (let obj of input) { %>
+            <% if (obj.question === questionText) { %>
+            <div class="answers">
+              <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
+              <br>
+            </div>
+            <% } else {  %>
+            <% questionText = obj.question %>
+            <h4 class="question"><%= questionText %></h4>
+            <br>
+            <div class="answers">
+              <input type="radio" name="<%= obj.question_id%>" value="<%= obj.id%>"><%= obj.answer %></input>
+              <br>
+            </div>
+            <% } %>
+            <% } %>
+            <br>
+            <button class="btn-answer_submit" type="submit">Submit Quiz</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </body>

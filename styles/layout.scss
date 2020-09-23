@@ -1,26 +1,29 @@
 // See: https://sass-lang.com/
 
 body {
-  background-color: #848463;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  background-color: whitesmoke;
+  background-image: url("https://motionarray.imgix.net/preview-168738-46fYQmML5k-high_0004.jpg");
+  background-size: auto;
+  background-position-y: 50px;
+  background-position-x: 450px;
   font-family: 'Times New Roman', Times, serif;
   nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: salmon;
+    background-color: #3D5D75;
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
     padding: 20px;
     position: fixed;
     top: 0;
     width: 100%;
     a {
-      color: black;
+      color: whitesmoke;
     }
     a:hover {
       font-weight: 900;
       box-shadow: inset;
-      color: beige;
+      color: black;
     }
 
   }
@@ -38,23 +41,27 @@ body {
       flex-direction: row-reverse;
       flex-wrap: wrap;
       justify-content: center;
+      width: 50%;
       .quiz-cont {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
       .quiz-link {
-        border: 1px dotted grey;
         border-radius: 5px;
+        color: whitesmoke;
         padding: 20px;
-        background-color: salmon;
+        background-color: #3D5D75;
         text-align: center;
         width: 300px;
+        min-height: 150px;
         margin: 10px;
       }
       .quiz-link:hover {
-        background-color: beige;
+        border: 3px solid #3D5D75;
+        background-color: whitesmoke;
         color: black;
+        box-shadow: 3px 3px grey;
         a {
           color: black;
         }
@@ -62,7 +69,7 @@ body {
     }
   }
   #create-quiz-cont  {
-    background-color: beige;
+    background-color: whitesmoke;
     width: 70%;
     padding: 20px;
     display: flex;
@@ -85,10 +92,10 @@ body {
 
   .create-quiz-link {
     border-radius: 5px;
-    background-color: salmon;
+    background-color: #3D5D75;
     padding: 20px;
     text-align: center;
-    color: black;
+    color:whitesmoke;
   }
   a {
     text-decoration: none;
@@ -98,19 +105,24 @@ body {
     font-weight: 900;
   }
   .create-quiz-link:hover {
+    border: 3px solid #3D5D75;
+    box-shadow: 3px 3px grey;
     color: black;
     font-weight: 900;
-    background-color: beige;
+    background-color: whitesmoke;
   }
   .delete-btn {
-    background-color:beige;
-    color: salmon;
+    background-color: #3D5D75;
+    color: whitesmoke;
+    border-radius: 3px;
   }
   .delete-btn:hover {
+    background-color: whitesmoke;
+    color: #3D5D75;
     box-shadow: 3px 3px lightsteelblue;
   }
   .create-question-cont {
-    background-color: beige;
+    background-color: whitesmoke;
     width: 70%;
     padding: 20px;
     display: flex;
@@ -131,12 +143,56 @@ body {
     }
   }
   .create-answers-cont {
-    background-color: beige;
+    background-color: whitesmoke;
     width: 70%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+  }
+  .finished-quiz-container {
+    background-color: #3D5D75;
+    padding: 50px;
+    border-radius: 5px;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .q-and-a{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-self: center;
+      border: 3px solid whitesmoke;
+      padding: 10px;
+      .btn-answer_submit {
+        background-color: whitesmoke;
+        color: #3D5D75;
+        border-radius: 3px;
+      }
+      .btn-answer_submit:hover {
+        background-color: #3D5D75;
+        color: whitesmoke;
+        border: 2px solid whitesmoke;
+      }
+      .question {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        justify-content: space-evenly;
+        margin-bottom: -5px;
+        color: whitesmoke;
+      }
+      .answers {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        margin-left: 7vw;
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
   }
 }
