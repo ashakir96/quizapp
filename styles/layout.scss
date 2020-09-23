@@ -1,9 +1,113 @@
 // See: https://sass-lang.com/
 
 body {
-  background-color: #EEE;
+  background-color: #848463;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  font-family: 'Times New Roman', Times, serif;
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: salmon;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    a {
+      color: black;
+    }
+    a:hover {
+      font-weight: 900;
+      box-shadow: inset;
+      color: beige;
+    }
 
+  }
   h1 {
-    color: #244751;
+    color: black;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    align-items: center;
+    margin-top: 120px;
+    .links-container {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      justify-content: center;
+      .quiz-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .quiz-link {
+        border: 1px dotted grey;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: salmon;
+        text-align: center;
+        width: 300px;
+        margin: 10px;
+      }
+      .quiz-link:hover {
+        background-color: beige;
+        color: black;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+  #create-quiz-cont {
+    background-color: beige;
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      input {
+        width: 90%;
+        margin: 10px;
+        border-radius: 3px;
+        padding: 10px;
+      }
+    }
+  }
+
+  .create-quiz-link {
+    border-radius: 5px;
+    background-color: salmon;
+    padding: 20px;
+    text-align: center;
+    color: black;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    font-weight: 900;
+  }
+  .create-quiz-link:hover {
+    color: black;
+    font-weight: 900;
+    background-color: beige;
+  }
+  .delete-btn {
+    background-color:beige;
+    color: salmon;
+    // border-radius: 5px;
+  }
+  .delete-btn:hover {
+    box-shadow: 3px 3px lightsteelblue;
   }
 }

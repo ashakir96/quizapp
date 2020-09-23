@@ -11,19 +11,22 @@
 <body>
   <header>
     <nav>
-        <h2>KWIZY</h2>
-      <!-- <a href="/users/<%= user_id %>">
+      <a href="/home/<%= attempt[0].user_id %>"><h2>KWIZY</h2></a>
+      <a href="/users/<%= attempt[0].user_id %>">
         <div class="create-quiz-link">
           Your Quizzes!
         </div>
-      </a> -->
+      </a>
     </nav>
   </header>
-  <h2> ADD Qs!!</h2>
-  <form method="POST" action="/quiz/<%= quizId %>/questions">
-    <label for="question">question</label>
-    <input type="text" name="question">
-    <button type="submit"> Submit </button>
-  </form>
+  <h2>Your Quiz Result!</h2>
+  <% for (let answer of attempt) { %>
+    <%= answer.question %>
+    <%= answer.answer %>
+    <%= answer.iscorrect %>
+    <br>
+  <% } %>
+<!-- <a href="/attempts/<%= attempt[0].id%>/user/<%= attempt[0].user_id %>">Take another quiz!</a> -->
+<a href="/home/<%= attempt[0].user_id%>">Take another quiz!</a>
 </body>
 </html>

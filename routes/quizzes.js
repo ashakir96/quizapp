@@ -6,23 +6,39 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
+  router.get('/:quizid', (req, res) => {
+    db.query(`
+    SELECT user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect
+    FROM answers
+    JOIN questions ON questions.id = answers.question_id
+    JOIN quizzes ON quizzes.id = questions.quiz_id
+    JOIN users ON user_id = users.id
+    WHERE quiz_id = $1
+    GROUP BY user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect, questions.id
+    ORDER BY questions.id;`, [req.params.quizid])
+      .then(data => {
+        let templateVar = { input: data.rows }
+        res.render('../views/quiz_in_prog', templateVar)
+      });
+  });
+
 
   router.get("/:quizid/questions", (req, res) => {
     req.session.quiz_id = req.params.quizid;
-    let templateVar = { quizId: req.params.quizid};
+    let templateVar = { quizId: req.params.quizid };
     res.render('../views/questions', templateVar);
   })
 
   router.get("/:quizid/questions/:questionid", (req, res) => {
     db.query(`SELECT question FROM questions WHERE id = $1;`, [req.params.questionid])
-    .then(data => {
-      let question = data.rows[0].question;
-      let templateVars = {quiz_id: req.params.quizid, question_id: req.params.questionid, question};
-      res.render('../views/answers', templateVars);
-    });
+      .then(data => {
+        let question = data.rows[0].question;
+        let templateVars = { quiz_id: req.params.quizid, question_id: req.params.questionid, question };
+        res.render('../views/answers', templateVars);
+      });
   });
 
   router.post("/:quizid/questions", (req, res) => {
@@ -41,7 +57,7 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-    });
+  });
 
   return router;
 };

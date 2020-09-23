@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Home Page</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <h1>Welcome to Quiz App! Make your own quizzes!</h1>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/home/<%= user_id %>"><h2>KWIZY</h2></a>
+      <a href="/users/<%= user_id %>">
+        <div class="create-quiz-link">
+          Your Quizzes!
+        </div>
+      </a>
+    </nav>
+  </header>
+  <div class="main-container">
+    <h1>Welcome to Quiz App!</h1>
+    <h2>(where you can make your own quizzes!)</h2>
+
+    <h2>Check out our quizzes!</h2>
+    <div class="links-container">
+      <% for (let quiz of quizzes) {%>
+      <a href="/attempts/<%= quiz.id%>/<%= user_id %>">
+        <div class="quiz-link">
+          <%= quiz.name %>
+          <br>
+          <p><%= quiz.description %></p>
+        </div>
+      </a>
+      <br>
+      <%}%>
+    </div>
+  </div>
   </body>
 </html>
