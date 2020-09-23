@@ -13,14 +13,21 @@
 <body>
   <header>
     <nav>
-      <h2>KWIZY</h2>
+      <a href="/home/<%= user.user_id %>">
+        <h2>KWIZY</h2>
+      </a>
+      <a href="/users/<%= user.user_id %>">
+        <div class="create-quiz-link">
+          Your Quizzes!
+        </div>
+      </a>
     </nav>
   </header>
   <div class="main-container">
     <div class="create-question-cont">
-      <h2> ADD Qs!!</h2>
+      <h2> ADD Question!</h2>
       <form method="POST" action="/quiz/<%= quizId %>/questions">
-        <label for="question">your question</label>
+        <label for="question">Your Question:</label>
         <input type="text" name="question">
         <button type="submit"> Submit </button>
       </form>
