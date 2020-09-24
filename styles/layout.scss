@@ -25,11 +25,8 @@ body {
       box-shadow: inset;
       color: black;
     }
+  }
 
-  }
-  h1 {
-    color: black;
-  }
   .main-container {
     display: flex;
     flex-direction: column;
@@ -53,6 +50,7 @@ body {
       background-color: #3D5D75;
       color: whitesmoke;
       border-radius: 5px;
+      margin-top: 30px;
       padding: 30px;
       display: flex;
       flex-direction: column;
@@ -293,11 +291,13 @@ body {
   .finished-quiz-container {
     background-color: #3D5D75;
     padding: 50px;
+    margin-top: 30px;
     border-radius: 5px;
     color: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     .q-and-a{
       display: flex;
       flex-direction: column;
@@ -327,7 +327,7 @@ body {
         display: flex;
         flex-direction: row;
         margin-bottom: 5px;
-        margin-left: 7vw;
+        margin-left: 4vw;
         input {
           margin-right: 5px;
         }
