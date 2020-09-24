@@ -3,9 +3,9 @@
 body {
   background-color: whitesmoke;
   background-image: url("https://motionarray.imgix.net/preview-168738-46fYQmML5k-high_0004.jpg");
-  background-size: auto;
-  background-position-y: 5vh;
-  background-position-x: 35vw;
+  background-size: 75vw;
+  background-position-y: 10vh;
+  background-position-x: 30vw;
   font-family: 'Times New Roman', Times, serif;
   nav {
     display: flex;
@@ -76,14 +76,14 @@ body {
         }
         .false {
           background-color: red;
-          width: 13.5%;
-          padding: 2px;
+          width: 4.2rem;
+          padding: 3px;
           border-radius: 3px;
         }
         .true {
           background-color: green;
-          width: 16.5%;
-          padding: 2px;
+          width: 5rem;
+          padding: 3px;
           border-radius: 3px;
         }
       }

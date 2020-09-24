@@ -41,11 +41,6 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/createquiz/:user_id", (req, res) => {
-    let templateVar = { userId: req.params.user_id };
-    res.render('../views/createQuiz', templateVar);
-  })
-
 
   router.post("/:user_id/createquiz", (req, res) => {
     let query = `INSERT INTO quizzes (user_id, name, description, isPrivate)
@@ -58,12 +53,14 @@ module.exports = (db) => {
         res.redirect(`/quiz/${quizid}/questions`);
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.send(`Please click back and complete the form.`);
       });
   });
 
+  router.get("/createquiz/:user_id", (req, res) => {
+    let templateVar = { userId: req.params.user_id };
+    res.render('../views/createQuiz', templateVar);
+  })
 
   router.post("/:user_id/delete/:quiz_id", (req, res) => {
     db.query(`DELETE FROM quizzes WHERE id = $1 AND user_id = $2;`,
