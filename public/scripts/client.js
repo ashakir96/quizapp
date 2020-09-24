@@ -4,7 +4,7 @@ $(function() {
 
   const $createQuiz = $("form#create-quiz");
   $createQuiz.on("submit", function(e) {
-    if ($("#quiz-title").val() === "" || $("quiz-description").val() === "" || ($("#is-private").val() === null && $("#is-public").val() === null)) {
+    if ($("#quiz-title").val() === "" || $("#quiz-description").val() === "" || !$("input[name='isPrivate']:checked").val()) {
       e.preventDefault();
       $(".error").slideDown(1000);
       return;
@@ -22,19 +22,19 @@ $(function() {
 
   const $createAnswers = $("#answers-form");
   $createAnswers.on("submit", function(e) {
-    if ($("#textbox1").val() === "" || ($("#is-incorrect1").val() === null && $("#is-correct1").val() === null)) {
+    if ($("#textbox1").val() === "" || !$("input[name='isCorrecta1']:checked").val()) {
       e.preventDefault();
       $(".error").slideDown(1000);
       return;
-    } else if ($("#textbox2").val() === "" || ($("#is-incorrect2").val() === null && $("#is-correct2").val() === null)) {
+    } else if ($("#textbox2").val() === "" || !$("input[name='isCorrecta2']:checked").val()) {
       e.preventDefault();
       $(".error").slideDown(1000);
       return;
-    } else if ($("#textbox3").val() === "" || ($("#is-incorrect3").val() === null && $("#is-correct3").val() === null)) {
+    } else if ($("#textbox3").val() === "" || !$("input[name='isCorrecta3']:checked").val()) {
       e.preventDefault();
       $(".error").slideDown(1000);
-      return;
-    } else if ($("#textbox4").val() === "" || ($("#is-incorrect4").val() === null && $("#is-correct4").val() === null)) {
+      return
+    } else if ($("#textbox4").val() === "" || !$("input[name='isCorrecta4']:checked").val()) {
       e.preventDefault();
       $(".error").slideDown(1000);
       return;
