@@ -8,42 +8,51 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAunMnAOuhUgD///8AmVkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAADMwREREREREAwERERERERRAASIiAAIiEUABIiAzMCIhQAEiIDMwIiFAASIiAAIiIUABIiAzMAIhQAMiIDMzMCFAASAAAAMzAUABAzMAAzMBQAMDMzMzMwFAAyAzMzMwIUADMgAAAAIhQDAzMiIiIiEDMwAAAAAAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAunMnAOuhUgD///8AmVkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAADMwREREREREAwERERERERRAASIiAAIiEUABIiAzMCIhQAEiIDMwIiFAASIiAAIiIUABIiAzMAIhQAMiIDMzMCFAASAAAAMzAUABAzMAAzMBQAMDMzMzMwFAAyAzMzMwIUADMgAAAAIhQDAzMiIiIiEDMwAAAAAAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    rel="icon" type="image/x-icon" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
 </head>
 
 <body>
   <header>
     <nav>
-      <h1>KWIZY</h1>
+      <a href="/home/<%= question.user_id %>">
+        <h1>KWIZY</h1>
+      </a>
     </nav>
   </header>
   <div class="main-container">
     <div class="create-answers-cont">
-      <h1>Your question: <%= question %></h1>
+      <h1>Your question: <%= question.question %></h1>
       <h3>Please provide four possible answers:</h3>
-      <form method="POST" action="/questions/<%= question_id%>">
+      <form id="answers-form" method="POST" action="/questions/<%= question_id%>">
         <label for="answer1">Answer 1</label>
-        <input class="textbox" type="text" name="answer1">
-        <input type="radio" name="isCorrecta1" value="false">Is incorrect?</input>
-        <input type="radio" name="isCorrecta1" value="true">Is correct?</input>
+        <input id="textbox1" class="textbox" type="text" name="answer1">
+        <input id="is-incorrect1" type="radio" name="isCorrecta1" value="false">Is incorrect?</input>
+        <input id="is-correct1" type="radio" name="isCorrecta1" value="true">Is correct?</input>
         <br>
         <label for="answer2">Answer 2</label>
-        <input class="textbox" type="text" name="answer2">
-        <input type="radio" name="isCorrecta2" value="false">Is incorrect?</input>
-        <input type="radio" name="isCorrecta2" value="true">Is correct?</input>
+        <input id="textbox2" class="textbox" type="text" name="answer2">
+        <input id="is-incorrect2" type="radio" name="isCorrecta2" value="false">Is incorrect?</input>
+        <input id="is-correct2" type="radio" name="isCorrecta2" value="true">Is correct?</input>
         <br>
         <label for="answer3">Answer 3</label>
-        <input class="textbox" type="text" name="answer3">
-        <input type="radio" name="isCorrecta3" value="false">Is incorrect?</input>
-        <input type="radio" name="isCorrecta3" value="true">Is correct?</input>
+        <input id="textbox3" class="textbox" type="text" name="answer3">
+        <input id="is-incorrect3" type="radio" name="isCorrecta3" value="false">Is incorrect?</input>
+        <input id="is-correct3" type="radio" name="isCorrecta3" value="true">Is correct?</input>
         <br />
         <label for="answer4">Answer 4</label>
-        <input class="textbox" type="text" name="answer4">
-        <input type="radio" name="isCorrecta4" value="false">Is incorrect?</input>
-        <input type="radio" name="isCorrecta4" value="true">Is correct?</input>
+        <input id="textbox4" class="textbox" type="text" name="answer4">
+        <input id="is-incorrect4" type="radio" name="isCorrecta4" value="false">Is incorrect?</input>
+        <input id="is-correct4" type="radio" name="isCorrecta4" value="true">Is correct?</input>
         <br>
         <button type="submit">Submit answers</button>
       </form>
+      <h2 class="error">Please input all answers.</h2>
     </div>
   </div>
 </body>

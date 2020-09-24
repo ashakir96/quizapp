@@ -36,9 +36,12 @@ module.exports = (db) => {
   })
 
   router.get("/:quizid/questions/:questionid", (req, res) => {
-    db.query(`SELECT question FROM questions WHERE id = $1;`, [req.params.questionid])
+    db.query(`SELECT question, user_id
+              FROM questions
+              JOIN quizzes ON (quiz_id = quizzes.id)
+              WHERE questions.id = $1;`, [req.params.questionid])
       .then(data => {
-        let question = data.rows[0].question;
+        let question = data.rows[0];
         let templateVars = { quiz_id: req.params.quizid, question_id: req.params.questionid, question };
         res.render('../views/answers', templateVars);
       });

@@ -26,6 +26,11 @@ body {
       color: black;
     }
   }
+  .error {
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+  }
 
   .main-container {
     display: flex;
@@ -93,6 +98,7 @@ body {
       flex-wrap: wrap;
       justify-content: center;
       width: 50%;
+      opacity: 0.1;
       .quiz-cont {
         display: flex;
         flex-direction: column;

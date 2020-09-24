@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAunMnAOuhUgD///8AmVkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAADMwREREREREAwERERERERRAASIiAAIiEUABIiAzMCIhQAEiIDMwIiFAASIiAAIiIUABIiAzMAIhQAMiIDMzMCFAASAAAAMzAUABAzMAAzMBQAMDMzMzMwFAAyAzMzMwIUADMgAAAAIhQDAzMiIiIiEDMwAAAAAAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
 </head>
 
 <body>
@@ -27,20 +31,21 @@
   <div class="main-container">
     <div id="create-quiz-cont">
       <h1> Make Your Own KWIZY!!</h1>
-      <form method="POST" action="/users/<%= userId %>/createquiz">
+      <form id="create-quiz" method="POST" action="/users/<%= userId %>/createquiz">
         <label for="name">Quiz Title:</label>
-        <input type="text" name="name">
+        <input id="quiz-title" type="text" name="name">
         <br>
         <label for="description"> Quiz Description:</label>
-        <input type="text" name="description">
+        <input id="quiz-description" type="text" name="description">
         <br>
         <div class="privacy">
-          <input type="radio" name="isPrivate" value="true"> Make private?</input>
-          <input type="radio" name="isPrivate" value="false"> Make public?</input>
+          <input id="is-private" type="radio" name="isPrivate" value="true"> Make private?</input>
+          <input id="is-public" type="radio" name="isPrivate" value="false"> Make public?</input>
           <br>
         </div>
         <button type="submit"> Add Question! </button>
       </form>
+      <h2 class="error">Please complete the form before submitting.</h2>
     </div>
   </div>
 </body>

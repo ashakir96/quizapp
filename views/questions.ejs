@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAunMnAOuhUgD///8AmVkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwAAAAAAADMwREREREREAwERERERERRAASIiAAIiEUABIiAzMCIhQAEiIDMwIiFAASIiAAIiIUABIiAzMAIhQAMiIDMzMCFAASAAAAMzAUABAzMAAzMBQAMDMzMzMwFAAyAzMzMwIUADMgAAAAIhQDAzMiIiIiEDMwAAAAAAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
 </head>
 
 <body>
@@ -27,11 +31,12 @@
   <div class="main-container">
     <div class="create-question-cont">
       <h2> ADD Question!</h2>
-      <form method="POST" action="/quiz/<%= quizId %>/questions">
+      <form id="quiz-question" method="POST" action="/quiz/<%= quizId %>/questions">
         <label for="question">Your Question:</label>
-        <input type="text" name="question">
+        <input id="question-text" type="text" name="question">
         <button type="submit"> Submit </button>
       </form>
+      <h2 class="error">Please input your question.</h2>
     </div>
   </div>
 </body>
