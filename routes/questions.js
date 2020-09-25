@@ -3,6 +3,8 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+  // creating a question for the quiz
+
   router.get('/:questionid', (req, res) => {
     db.query(`SELECT question FROM questions WHERE id = $1;`, [req.params.questionid])
       .then(data => {
@@ -12,6 +14,7 @@ module.exports = (db) => {
       });
   });
 
+  // adding the inputted answers to the database
 
   router.post('/:questionId', (req, res) => {
     let values = [req.params.questionId, req.body.answer1, req.body.isCorrecta1, req.body.answer2, req.body.isCorrecta2,

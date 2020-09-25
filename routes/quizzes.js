@@ -9,6 +9,9 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+
+  // quiz in progress page, users can still add questions
+
   router.get('/:quizid', (req, res) => {
     db.query(`
     SELECT user_id, question_id, quizzes.name, questions.question, answers.answer, quiz_id, answers.isCorrect
@@ -25,6 +28,7 @@ module.exports = (db) => {
       });
   });
 
+  // adding a question after creating the quiz
 
   router.get("/:quizid/questions", (req, res) => {
     req.session.quiz_id = req.params.quizid;
@@ -34,6 +38,8 @@ module.exports = (db) => {
       res.render('../views/questions', templateVar);
     })
   })
+
+  // the answers page where creators of a quiz can input 4 answers to a question
 
   router.get("/:quizid/questions/:questionid", (req, res) => {
     db.query(`SELECT question, user_id
@@ -46,6 +52,8 @@ module.exports = (db) => {
         res.render('../views/answers', templateVars);
       });
   });
+
+  //storing the question created by user into the database
 
   router.post("/:quizid/questions", (req, res) => {
     let query = `INSERT INTO questions (quiz_id, question)

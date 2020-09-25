@@ -9,6 +9,9 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+
+  //test page
+
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
@@ -21,6 +24,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // user home page where they can see the quizzes they created
 
   router.get('/:id', (req, res) => {
     db.query(`
@@ -41,6 +46,7 @@ module.exports = (db) => {
       });
   });
 
+  // storing created quizzes into the database
 
   router.post("/:user_id/createquiz", (req, res) => {
     let query = `INSERT INTO quizzes (user_id, name, description, isPrivate)
@@ -57,10 +63,14 @@ module.exports = (db) => {
       });
   });
 
+  // creating a quiz page
+
   router.get("/createquiz/:user_id", (req, res) => {
     let templateVar = { userId: req.params.user_id };
     res.render('../views/createQuiz', templateVar);
   })
+
+  // delete button function
 
   router.post("/:user_id/delete/:quiz_id", (req, res) => {
     db.query(`DELETE FROM quizzes WHERE id = $1 AND user_id = $2;`,

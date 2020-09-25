@@ -3,6 +3,8 @@ const router = express.Router();
 
 module.exports = (db) => {
 
+// viewing results from the quiz
+
   router.get("/:quiz_attempt_id/results", (req, res) => {
     let string = `
     SELECT answer_attempts.id, answer, question, isCorrect, quiz_attempt_id, answer_attempts.user_id, quizzes.name
@@ -21,6 +23,7 @@ module.exports = (db) => {
     })
   })
 
+  // page for completed quiz once all questions have been added
 
   router.get("/:quiz_id/:user_id", (req, res) => {
     db.query(`
@@ -37,6 +40,9 @@ module.exports = (db) => {
         res.render('../views/finishedQuiz', templateVar)
       });
   });
+
+
+  //inserting the quiz attempt and answer attempt data into the database
 
   router.post("/:quiz_id/results/:user_id", (req, res) => {
     req.session = req.body;
